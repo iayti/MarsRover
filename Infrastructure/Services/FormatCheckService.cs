@@ -12,6 +12,9 @@ namespace Infrastructure.Services
         /// <returns></returns>
         public bool RoverRoute(string roverRoute)
         {
+            if (roverRoute == null)
+                return false;
+            
             Regex rx = new Regex(@"^[LMR]+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             return rx.IsMatch(roverRoute);
@@ -24,6 +27,9 @@ namespace Infrastructure.Services
         /// <returns></returns>
         public bool PositionDirection(string positionDirection)
         {
+            if (positionDirection == null)
+                return false;
+            
             Regex rx = new Regex(@"^\d+ \d+ [NESW]$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             return rx.IsMatch(positionDirection);
@@ -36,6 +42,9 @@ namespace Infrastructure.Services
         /// <returns></returns>
         public bool Dimension(string dimension)
         {
+            if (dimension == null)
+                return false;
+            
             Regex rx = new Regex(@"^\d+ \d+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             return rx.IsMatch(dimension);
