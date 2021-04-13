@@ -8,12 +8,10 @@ namespace Case_Study_Mars_Rover
     {
         static void Main(string[] args)
         {
-            //TODO: If the "exit" enters loop will be finished.
-
+            //TODO: rovers cannot be in the same position.
             while (true)
             {
                 Console.WriteLine("Enter the dimensions: ");
-                //Get dimension of the plateau on Mars
                 string dimension = Console.ReadLine()?.Trim();
 
                 if (!DimensionFormatCheck(dimension))
@@ -48,62 +46,53 @@ namespace Case_Study_Mars_Rover
                         continue;
                     }
 
-                    if (positionDirection != null)
+                    if (positionDirection == null) 
+                        continue;
+                    
+                    string[] positionDirectionArray = positionDirection.Split(" ");
+
+                    int roverLocationX = int.Parse(positionDirectionArray[0]);
+                    int roverLocationY = int.Parse(positionDirectionArray[1]);
+                    string roverDirection = positionDirectionArray[2];
+
+                    if (IsRoverInThePlateau(roverLocationX, plateauAreaX, roverLocationY, plateauAreaY)) 
+                        continue;
+                    
+                    Console.WriteLine("Enter the rover instructions: ");
+                    string roverRoute = Console.ReadLine()?.Trim();
+                    
+                    if (!RoverRouteFormatCheck(roverRoute))
                     {
-                        string[] positionDirectionArray = positionDirection.Split(" ");
+                        Console.WriteLine("Please write the rover instructions correctly. For example: LMLMLMRM, L: Left, R: Right, M: Move");
+                        continue;
+                    }
 
-                        int roverLocationX = int.Parse(positionDirectionArray[0]);
-                        int roverLocationY = int.Parse(positionDirectionArray[1]);
-                        string roverDirection = positionDirectionArray[2];
+                    if (roverRoute == null)
+                        continue;
 
-                        //Rover rover = new Rover(roverLocationX, roverLocationY, roverDirection);
-
-                        string roverRoute = Console.ReadLine()?.Trim();
-
-                        if (roverLocationX > plateauAreaX || roverLocationX < 0 || roverLocationY > plateauAreaY || roverLocationY < 0)
+                    foreach (var route in roverRoute)
+                    {
+                        switch (route)
                         {
-                            Console.WriteLine("The rover is not in the plateau");
-                            continue;
-                        }
-
-                        if (roverRoute == null)
-                            continue;
-
-                        foreach (var route in roverRoute)
-                        {
-                            switch (route)
-                            {
-                                case 'L' or 'R':
-                                    roverDirection = CalculateDirection(roverDirection, route);
-                                    break;
-                                case 'M':
-                                    var result = MoveRover(roverLocationX, roverLocationY, roverDirection);
-                                    roverLocationX = result.Item1;
-                                    roverLocationY = result.Item2;
-                                    break;
-                            }
-                        }
-
-                        Rover rover = new Rover(roverLocationX, roverLocationY, roverDirection);
-                        roverList.Add(rover);
-
-                        Add_Rover:
-                        Console.WriteLine("Rover added to the plateau on Mars!");
-                        Console.WriteLine("If you want to add one more rover, please write 'add'");
-                        Console.WriteLine("If there is enough rover, please write 'go'");
-
-                        string state = Console.ReadLine()?.Trim();
-
-                        if (!string.IsNullOrEmpty(state))
-                        {
-                            if (state == "add")
-                                continue;
-                            if (state == "go")
+                            case 'L' or 'R':
+                                roverDirection = CalculateDirection(roverDirection, route);
                                 break;
-
-                            goto Add_Rover;
+                            case 'M':
+                                var result = MoveRover(roverLocationX, roverLocationY, roverDirection);
+                                roverLocationX = result.Item1;
+                                roverLocationY = result.Item2;
+                                break;
                         }
                     }
+                    
+                    if (IsRoverInThePlateau(roverLocationX, plateauAreaX, roverLocationY, plateauAreaY)) 
+                        continue;
+
+                    var rover = new Rover(roverLocationX, roverLocationY, roverDirection);
+                    roverList.Add(rover);
+
+                    if (!AddOrGoRover())
+                        break;
                 }
 
                 foreach (var rover in roverList)
@@ -111,19 +100,70 @@ namespace Case_Study_Mars_Rover
                     Console.WriteLine(rover.LocationDirection);
                 }
 
-                Console.WriteLine("If you want to exit the program, please write 'exit'");
-                Console.WriteLine("If you want to continue the program, please write any key.");
-
-                string programState = Console.ReadLine()?.Trim();
-
-                if (string.IsNullOrEmpty(programState))
-                    continue;
-                if (programState == "exit")
+                if (!ExitOrContinueProgram())
                     break;
             }
 
             Console.WriteLine("Program closed!");
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Checks rover is in the plateau after the instructions.
+        /// </summary>
+        /// <param name="roverLocationX"></param>
+        /// <param name="plateauAreaX"></param>
+        /// <param name="roverLocationY"></param>
+        /// <param name="plateauAreaY"></param>
+        /// <returns></returns>
+        public static bool IsRoverInThePlateau(int roverLocationX, int plateauAreaX, int roverLocationY, int plateauAreaY)
+        {
+            if (roverLocationX <= plateauAreaX && roverLocationX >= 0 && roverLocationY <= plateauAreaY && roverLocationY >= 0) 
+                return false;
+            
+            Console.WriteLine("The rover is not in the plateau after instructions!!");
+            
+            return true;
+        }
+
+        /// <summary>
+        /// Decide programme Exit or Continue
+        /// </summary>
+        /// <returns></returns>
+        private static bool ExitOrContinueProgram()
+        {
+            Console.WriteLine("If you want to continue the program, press any key or write 'exit' for closing programme");
+
+            string programState = Console.ReadLine()?.Trim();
+
+            if (string.IsNullOrEmpty(programState))
+                return true;
+            return programState != "exit";
+        }
+
+        /// <summary>
+        /// Decide Add one more rover or Go to results
+        /// </summary>
+        /// <returns></returns>
+        private static bool AddOrGoRover()
+        {
+            Add_Rover:
+            Console.WriteLine("Rover added to the plateau on Mars!");
+            Console.WriteLine("If you want to add one more rover, please write 'add'. If It is enough, please write 'go'.");
+
+            string state = Console.ReadLine()?.Trim();
+
+            if (!string.IsNullOrEmpty(state))
+            {
+                if (state == "add")
+                    return true;
+                if (state == "go")
+                    return false;
+
+                goto Add_Rover;
+            }
+
+            return false;
         }
 
         /// <summary>
