@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Case_Study_Mars_Rover
@@ -88,17 +89,21 @@ namespace Case_Study_Mars_Rover
                     if (IsRoverInThePlateau(roverLocationX, plateauAreaX, roverLocationY, plateauAreaY)) 
                         continue;
 
+                    if (CheckRoverPositions(roverList, roverLocationX, roverLocationY)) 
+                        continue;
+
                     var rover = new Rover(roverLocationX, roverLocationY, roverDirection);
                     roverList.Add(rover);
 
                     if (!AddOrGoRover())
                         break;
                 }
+                
+                Console.WriteLine("Results of the locations and directions of the Rovers: ");
 
                 foreach (var rover in roverList)
-                {
                     Console.WriteLine(rover.LocationDirection);
-                }
+            
 
                 if (!ExitOrContinueProgram())
                     break;
@@ -106,6 +111,24 @@ namespace Case_Study_Mars_Rover
 
             Console.WriteLine("Program closed!");
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Checks Rover positions
+        /// If more than one rover is in the same position, change the instructions!
+        /// </summary>
+        /// <param name="roverList"></param>
+        /// <param name="roverLocationX"></param>
+        /// <param name="roverLocationY"></param>
+        /// <returns></returns>
+        public static bool CheckRoverPositions(List<Rover> roverList, int roverLocationX, int roverLocationY)
+        {
+            if (!roverList.Any(item => item.X == roverLocationX && item.Y == roverLocationY)) 
+                return false;
+            
+            Console.WriteLine("Please change the instructions. Newly added rover in same location as another rover!!");
+            
+            return true;
         }
 
         /// <summary>
