@@ -1,4 +1,4 @@
-﻿namespace Case_Study_Mars_Rover
+﻿namespace Domain.Entities
 {
     public class Rover
     {
