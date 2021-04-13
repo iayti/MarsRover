@@ -9,7 +9,6 @@ namespace Case_Study_Mars_Rover
     {
         static void Main(string[] args)
         {
-            //TODO: rovers cannot be in the same position.
             while (true)
             {
                 Console.WriteLine("Enter the dimensions: ");

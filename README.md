@@ -1,4 +1,13 @@
 # Case Study Mars Rover
+
+Unit Tests
+1. Have dimensions true format? 5 5
+2. Has the rover position and direction true format? 1 2 N
+3. Is the rover position in the plateau after the position and direction installing?
+4. Has the rover instructions true format?  LMLMLMLMM 
+5. Is the rover's location still on the plateau after the instructions?
+6. Does the newly added rover have the same location as another rover?
+
 Example of the Console Application: 
 
 Enter the dimensions:  
