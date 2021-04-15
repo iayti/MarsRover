@@ -15,12 +15,12 @@ Open CLI in the project folder and run the below comment.
 PS MarsRover> dotnet run --project MarsRover.ConsoleApp
 ```
 #### Console App Instructions
-Enter the dimension: 'Integer Integer' => 5 5  
-Enter the rover position and direction: 'Integer Integer Direction' => 1 2 N  N: North, E: East, S: South, W: West  
-Enter the rover instructions: 'LMLMMLLMM' => L: Left, R: Right, M: Move
-add: adding new rover on the plateau  
-go: result of the locations and directions of the rovers  
-exit: closed the programme.  
+* Enter the dimension: 'Integer Integer' => 5 5  
+* Enter the rover position and direction: 'Integer Integer Direction' => 1 2 N  N: North, E: East, S: South, W: West  
+* Enter the rover instructions: 'LMLMMLLMM' => L: Left, R: Right, M: Move  
+* add: adding new rover on the plateau  
+* go: result of the locations and directions of the rovers  
+* exit: closed the programme.  
 
 ## Technologies
 * ASP.NET Core 5
