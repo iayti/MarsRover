@@ -24,8 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Application\Application.csproj" />
-      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="..\MarsRover.Application\MarsRover.Application.csproj" />
+      <ProjectReference Include="..\MarsRover.Infrastructure\MarsRover.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

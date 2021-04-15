@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Application.Interfaces;
-using Domain.Entities;
+using MarsRover.Application.Interfaces;
+using MarsRover.Domain.Entities;
 
-namespace Infrastructure.Services
+namespace MarsRover.Infrastructure.Services
 {
     public class RoverMovementService : IRoverMovementService
     {

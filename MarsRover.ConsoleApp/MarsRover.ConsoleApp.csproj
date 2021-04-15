@@ -6,9 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Application\Application.csproj" />
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="..\MarsRover.Application\MarsRover.Application.csproj" />
+      <ProjectReference Include="..\MarsRover.Domain\MarsRover.Domain.csproj" />
+      <ProjectReference Include="..\MarsRover.Infrastructure\MarsRover.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

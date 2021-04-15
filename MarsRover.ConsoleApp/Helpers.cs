@@ -1,6 +1,6 @@
 using System;
 
-namespace Case_Study_Mars_Rover
+namespace MarsRover.ConsoleApp
 {
     public static class Helpers
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Domain.Entities;
+using MarsRover.Domain.Entities;
 
-namespace Application.Interfaces
+namespace MarsRover.Application.Interfaces
 {
     public interface IRoverMovementService
     {

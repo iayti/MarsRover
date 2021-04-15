@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Application.Interfaces;
-using Domain.Entities;
-using Infrastructure.Services;
+using MarsRover.Application.Interfaces;
+using MarsRover.Domain.Entities;
+using MarsRover.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Case_Study_Mars_Rover
+namespace MarsRover.ConsoleApp
 {
     class Program
     {

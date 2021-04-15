@@ -1,10 +1,10 @@
-using Application.Interfaces;
+using MarsRover.Application.Interfaces;
 using FluentAssertions;
-using Infrastructure.Services;
+using MarsRover.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Case_Study_Mars_Rover.UnitTests
+namespace MarsRover.UnitTests
 {
     public class FormatCheckServiceTests
     {
