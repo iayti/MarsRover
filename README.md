@@ -1,6 +1,6 @@
 # Case Study Mars Rover
 
-According to the TDD methodology, I had to prepare tests first and then add the business codes, but since I first understood the flow in the project and then turned to possible scenarios, I added the tests later.
+According to the TDD methodology, I had to prepare tests first and then add the business codes, but since I first understood the flow in the project and then turned to possible scenarios, I added the tests later. You can check my commit history for the solution steps.
 
 #### Solution steps of the project:
 * Create a console app and wrote an algorithm that works on happy path.
