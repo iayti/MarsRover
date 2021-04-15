@@ -41,10 +41,7 @@ exit: closed the programme.
 Enter the dimensions:  
 5 C 5  
 Please write the dimension of the plateau on Mars. For example: 5 5  
-Enter the dimensions:  
-5  5  
-Please write the dimension of the plateau on Mars. For example: 5 5  
-Enter the dimensions:  
+Enter the dimensions:   
 5 5 C  
 Please write the dimension of the plateau on Mars. For example: 5 5  
 Enter the dimensions:  
