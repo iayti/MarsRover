@@ -58,7 +58,19 @@ namespace MarsRover.ConsoleApp
             Console.WriteLine("Program closed!");
             Console.ReadLine();
         }
-
+        
+        /// <summary>
+        /// Get Instructions of the rover from user.
+        /// </summary>
+        /// <param name="formatCheckService"></param>
+        /// <param name="roverMovementService"></param>
+        /// <param name="plateauAreaX"></param>
+        /// <param name="plateauAreaY"></param>
+        /// <param name="roverList"></param>
+        /// <param name="roverDirection"></param>
+        /// <param name="roverLocationX"></param>
+        /// <param name="roverLocationY"></param>
+        /// <returns></returns>
         private static bool GetInstructions(IFormatCheckService formatCheckService, IRoverMovementService roverMovementService, int plateauAreaX, int plateauAreaY, List<Rover> roverList, ref string roverDirection, ref int roverLocationX, ref int roverLocationY)
         {
             Console.WriteLine("Enter the rover instructions: ");
@@ -102,6 +114,17 @@ namespace MarsRover.ConsoleApp
 
         }
 
+        /// <summary>
+        /// Get Position and Direction info from user.
+        /// </summary>
+        /// <param name="formatCheckService"></param>
+        /// <param name="roverMovementService"></param>
+        /// <param name="plateauAreaX"></param>
+        /// <param name="plateauAreaY"></param>
+        /// <param name="roverLocationX"></param>
+        /// <param name="roverLocationY"></param>
+        /// <param name="roverDirection"></param>
+        /// <returns></returns>
         private static bool GetPositionDirection(IFormatCheckService formatCheckService, IRoverMovementService roverMovementService, int plateauAreaX, int plateauAreaY, out int roverLocationX, out int roverLocationY, out string roverDirection)
         {
             Console.WriteLine("Enter the rover position and direction: ");
@@ -138,6 +161,13 @@ namespace MarsRover.ConsoleApp
             return true;
         }
 
+        /// <summary>
+        /// Get the area of the plateau on Mars from user.
+        /// </summary>
+        /// <param name="formatCheckService"></param>
+        /// <param name="plateauAreaX"></param>
+        /// <param name="plateauAreaY"></param>
+        /// <returns></returns>
         private static bool GetDimensions(IFormatCheckService formatCheckService, out int plateauAreaX, out int plateauAreaY)
         {
             Console.WriteLine("Enter the dimensions: ");

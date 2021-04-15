@@ -1,6 +1,34 @@
 # Case Study Mars Rover
 
-Unit Tests
+According to the TDD methodology, I had to prepare tests first and then add the business codes, but since I first understood the flow in the project and then turned to possible scenarios, I added the tests later.
+
+####Solution steps of the project:
+* Create a console app and wrote an algorithm that works on happy path.
+* Refactored the one class app.
+* Adding application loops.
+* Refactored the project for Unit Test applicable.
+* Adding Unit Tests.
+
+#### Run 
+Open CLI in the project folder and run the below comment.
+```powershell
+PS MarsRover> dotnet run --project MarsRover.ConsoleApp
+```
+####Console App Instructions
+Enter the dimension: 'Integer Integer' => 5 5  
+Enter the rover position and direction: 'Integer Integer Direction' => 1 2 N  N: North, E: East, S: South, W: West  
+Enter the rover instructions: 'LMLMMLLMM' => L: Left, R: Right, M: Move
+add: adding new rover on the plateau  
+go: result of the locations and directions of the rovers  
+exit: closed the programme.  
+
+## Technologies
+* ASP.NET Core 5
+* C# 9.0
+* [FluentValidation](https://fluentvalidation.net/)
+* [XUnit](https://xunit.net/), [FluentAssertions](https://fluentassertions.com/), [Moq](https://github.com/moq)
+
+##Unit Tests
 1. Have dimensions true format? 5 5
 2. Has the rover position and direction true format? 1 2 N
 3. Is the rover position in the plateau after the position and direction installing?
@@ -8,7 +36,7 @@ Unit Tests
 5. Is the rover's location still on the plateau after the instructions?
 6. Does the newly added rover have the same location as another rover?
 
-Example of the Console Application: 
+###Example of the Console Application: 
 
 Enter the dimensions:  
 5 C 5  
