@@ -94,8 +94,13 @@ namespace MarsRover.ConsoleApp
                         break;
                     case 'M':
                         var result = roverMovementService.MoveRover(roverLocationX, roverLocationY, roverDirection);
-                        roverLocationX = result.Item1;
-                        roverLocationY = result.Item2;
+                        if (!roverMovementService.IsRoverInThePlateau(result.Item1, plateauAreaX, result.Item2, plateauAreaY) && 
+                            !roverMovementService.CheckRoverPositions(roverList,result.Item1,result.Item2))
+                        {
+                            roverLocationX = result.Item1;
+                            roverLocationY = result.Item2;
+                        }
+
                         break;
                 }
             }
